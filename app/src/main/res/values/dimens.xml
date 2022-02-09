@@ -1,0 +1,9 @@
+<resources>
+    <dimen name="image_list_height">550dp</dimen>
+    <dimen name="placeHolder_list_height">125dp</dimen>
+    <dimen name="image_list_margin">8dp</dimen>
+    <dimen name="card_corner">24dp</dimen>
+    <dimen name="title_txt_size">15sp</dimen>
+    <dimen name="placeholder_txt_size">20sp</dimen>
+    <dimen name="margin_info">16dp</dimen>
+</resources>
