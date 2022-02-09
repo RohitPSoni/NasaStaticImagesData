@@ -9,19 +9,16 @@ interface NetworkCall {
 
 class NetworkCallImpl : NetworkCall {
     override suspend fun <T : Any> apiCall(call: suspend () -> Response<T>): ResultWrapper<T> {
-        val response = runCatching {
-            call.invoke()
-        }.getOrElse {
-            return ResultWrapper.Error(it)
-        }
-        return if (!response.isSuccessful) {
-            ResultWrapper.Error(Exception(response.message()))
-        } else {
+        return runCatching {
+            val response = call.invoke()
             response.body()?.let {
                 ResultWrapper.Success(it)
-            } ?: run {
+            }?:run {
                 ResultWrapper.Error(Exception("response.body() can't be null"))
             }
+
+        }.getOrElse {
+            return ResultWrapper.Error(it)
         }
     }
 }

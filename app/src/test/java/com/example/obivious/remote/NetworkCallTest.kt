@@ -35,7 +35,7 @@ class NetworkCallTest {
     }
 
     @Test
-    fun `when response is successFull but empty body`() = runBlocking{
+    fun `when response is successFull`() = runBlocking{
         val mockResponse = Response.success(generateMockNetworkList())
         Mockito.`when`(api.getAllList()).thenReturn(mockResponse)
         val response = networkCall.apiCall { api.getAllList() }
